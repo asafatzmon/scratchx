@@ -1,4 +1,6 @@
 (function(ext) {
+    var cold = false;
+
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
@@ -16,15 +18,24 @@
               success: function( weather_data ) {
                   // Got the data - parse it and return the temperature
                   temperature = weather_data['main']['temp'];
+                  if (temperature < 60)
+                    cold true;
+                  else
+                    cold = false;
                   callback(temperature);
               }
         });
+    };
+
+    ext.when_cold = function() {
+       return cold;
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             ['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'],
+            ['h', 'when cold', 'when_cold'],
         ]
     };
 
