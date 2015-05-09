@@ -35,7 +35,7 @@
     var descriptor = {
         blocks: [
             ['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'],
-            ['h', 'when cold', 'when_cold'],
+            ['h', 'when cold', 'when_cold']
         ]
     };
 
