@@ -28,14 +28,17 @@
     };
 
     ext.when_cold = function() {
-       return cold;
+      if (cold === true)
+        return true;
+      else
+        return false;
     };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             ['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'],
-            ['h', 'when cold', 'when_cold']
+            ['h', 'when cold', 'when_cold'] 
         ]
     };
 
